@@ -8,16 +8,16 @@ Get-ChildItem -Path $logFolder -Filter "*.log" | ForEach-Object {
     if ($lines.Count -ge 3) {
         # Take the 3 last lines
         $last3 = $lines[-3..-1]
-        $antepenultimaOK = $last3[0] -match "\\.\\.OK!"
-        $penultimaOK     = $last3[1] -match "\\.\\.OK!"
-        $ultimaMinutes   = $last3[2] -match "Minutes"
+        $antepenultimateOK = $last3[0] -match "\\.\\.OK!"
+        $penultimateOK     = $last3[1] -match "\\.\\.OK!"
+        $lastMinutes   = $last3[2] -match "Minutes"
         
-        if ($antepenultimaOK -and $penultimaOK -and $ultimaMinutes) {
-            Write-Host "Archivo '$file': Meets the conditions"
+        if ($antepenultimateOK -and $penultimateOK -and $lastMinutes) {
+            Write-Host "File '$file': Meets the conditions"
         } else {
-            Write-Host "Archivo '$file': Does not meet the conditions"
+            Write-Host "File '$file': Does not meet the conditions"
         }
     } else {
-        Write-Host "Archivo '$file': Does not have enough lines"
+        Write-Host "File '$file': Does not have enough lines"
     }
 }
