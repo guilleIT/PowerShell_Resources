@@ -36,3 +36,29 @@
 |Microsoft.Graph / EntraID	|New-MgGroup / New-EntraGroup	|Crea grupo en Entra ID
 |Microsoft.Graph / EntraID	|Set-MgGroup / Set-EntraGroup	|Modifica grupo en Entra ID
 |Microsoft.Graph / EntraID	|Remove-MgGroup / Remove-EntraGroup	|Elimina grupos en Entra ID
+
+<br>
+<br>
+
+## **Some Querys:**
+
+***- Get all properties and methods from the selected cmdlet (Get-Service):***<br>
+```powershell
+Get-Service | Get-Member
+```
+
+***- Get all properties and methods from the selected Service (Wseacrh):***<br>
+```powershell
+Get-Service Wsearch | Get-Member
+```
+
+***- Show all metadatos from the selected cmdlet:***<br>
+```powershell
+Get-Command Get-Process | Format-List *
+```
+
+***- Get the count of running cmdleds:***<br>
+```powershell
+Get-Service | Where-Object {$_.Status -eq "Running"} | Group-Object Status
+```
+
