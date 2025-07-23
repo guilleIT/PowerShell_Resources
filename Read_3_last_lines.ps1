@@ -50,3 +50,5 @@ Get-ChildItem -Path $logFolder -Filter "*.log" | ForEach-Object {
         Write-Host "File '$file': Does not have enough lines"
     }
 }
+
+=IFERROR(MID(A1, FIND("""", A1) + 1, FIND("""", A1, FIND("""", A1) + 1) - FIND("""", A1) - 1), "")
