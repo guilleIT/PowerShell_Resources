@@ -16,6 +16,7 @@ Get-ChildItem -Path $logFolder -Filter "*.log" | ForEach-Object {
             Write-Host "File '$file': Meets the conditions"
         } else {
             Write-Host "File '$file': Does not meet the conditions"
+            --Write-host "Check '$last3[0]' "
         }
     } else {
         Write-Host "File '$file': Does not have enough lines"
