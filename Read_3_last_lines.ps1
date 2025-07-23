@@ -36,7 +36,7 @@ Get-ChildItem -Path $logFolder -Filter "*.log" | ForEach-Object {
         # Take the 3 last lines
         $last3 = $lines[-3..-1]
 
-        $antepenultimateOK = $last3[0] -match "\.\.OK!"
+        #$antepenultimateOK = $last3[0] -match "\.\.OK!"
         $penultimateOK     = $last3[1] -match "\.\.OK!"
         $lastMinutes       = $last3[2] -match "Script finished"
 
