@@ -47,6 +47,22 @@
 Get-Service | Get-Member
 ```
 
+***- Groups the methods and properties (members) of the Get-Service cmdlet by member type:***<br>
+```powershell
+Get-Service | Get-Member | Group-Object MemberType
+```
+![alt text](image.png)
+
+***- Way #1 to filter all the members (Methods and properties) with MemberType='Method':***<br>
+```powershell
+Get-Service | Get-Member -MemberType Method
+```
+
+***- Way #2 to filter all the members (Methods and properties) with MemberType='Method':***<br>
+```powershell
+Get-Service | Get-Member -MemberType Method
+```
+
 ***- Get all properties and methods from the selected Service (Wseacrh):***<br>
 ```powershell
 Get-Service Wsearch | Get-Member
@@ -57,8 +73,10 @@ Get-Service Wsearch | Get-Member
 Get-Command Get-Process | Format-List *
 ```
 
-***- Get the count of running cmdleds:***<br>
+***- Groups all services with status 'Running':***<br>
 ```powershell
 Get-Service | Where-Object {$_.Status -eq "Running"} | Group-Object Status
 ```
+
+
 
