@@ -55,3 +55,8 @@ PARA VERIFICAR LA RUTA DE DONDE SE VA A COPIAR LA *.DLL PARA CREARLA CON LA GPO
 --------------------------------------------------------------------------------
 $domain = ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).Name
 $ruta = "\\$domain\SYSVOL\$domain\Policies\Nuget\Microsoft.PackageManagement.NuGetProvider.dll"
+
+Scannear:
+--------
+Get-ChildItem -Path 'C:\' -Include *NuGet*.dll -File -Recurse -ErrorAction SilentlyContinue |
+    Select-Object FullName, Length, LastWriteTime
