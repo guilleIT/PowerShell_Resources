@@ -66,4 +66,7 @@ GPRESULT:
 gpresult /h C:\Temp\gpresult.html /f
 
 
+Get-PackageProvider -ListAvailable | Select Name, Version, ProviderPath
+
+
 
