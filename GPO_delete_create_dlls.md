@@ -60,3 +60,7 @@ Scannear:
 --------
 Get-ChildItem -Path 'C:\' -Include *NuGet*.dll -File -Recurse -ErrorAction SilentlyContinue |
     Select-Object FullName, Length, LastWriteTime
+
+GPRESULT:
+--------
+gpresult /h C:\Temp\gpresult.html /f
