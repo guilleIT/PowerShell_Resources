@@ -68,5 +68,10 @@ gpresult /h C:\Temp\gpresult.html /f
 
 Get-PackageProvider -ListAvailable | Select Name, Version, ProviderPath
 
+VER CUAL ES LA DDL QUE SE ESTÁ USANDO:
+-------------------------------------
+[AppDomain]::CurrentDomain.GetAssemblies() | 
+Where-Object { $_.Location -like '*NuGetProvider*.dll' } |
+Select Location
 
 
