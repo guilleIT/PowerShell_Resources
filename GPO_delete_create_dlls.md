@@ -74,4 +74,8 @@ VER CUAL ES LA DDL QUE SE ESTÁ USANDO:
 Where-Object { $_.Location -like '*NuGetProvider*.dll' } |
 Select Location
 
+\\%DomainName%
+
+%ProgramFiles%
+
 
