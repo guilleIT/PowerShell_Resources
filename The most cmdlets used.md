@@ -40,6 +40,31 @@
 <br>
 <br>
 
+# Operadores Lógicos y de Comparación en PowerShell
+
+| **Operador**   | **Tipo**         | **Descripción**                                                                                  | **Ejemplo**                                    |
+|----------------|------------------|--------------------------------------------------------------------------------------------------|------------------------------------------------|
+| `-and`         | Lógico           | Devuelve **True** si las dos condiciones son verdaderas.                                         | `($a -gt 5) -and ($b -lt 10)`                  |
+| `-or`          | Lógico           | Devuelve **True** si al menos una de las condiciones es verdadera.                              | `($a -gt 5) -or ($b -lt 10)`                   |
+| `-xor`         | Lógico           | Devuelve **True** si solo una de las condiciones es verdadera (exclusivo).                      | `($a -gt 5) -xor ($b -lt 10)`                  |
+| `-not` o `!`   | Lógico           | Invierte el valor lógico (**True** ↔ **False**).                                                 | `-not ($a -gt 5)` / `!($a -gt 5)`              |
+| `-eq`          | Comparación      | Igual a (equal).                                                                                 | `$a -eq 5`                                     |
+| `-ne`          | Comparación      | No igual a (not equal).                                                                          | `$a -ne 5`                                     |
+| `-gt`          | Comparación      | Mayor que (greater than).                                                                        | `$a -gt 5`                                     |
+| `-ge`          | Comparación      | Mayor o igual que (greater or equal).                                                            | `$a -ge 5`                                     |
+| `-lt`          | Comparación      | Menor que (less than).                                                                           | `$a -lt 5`                                     |
+| `-le`          | Comparación      | Menor o igual que (less or equal).                                                               | `$a -le 5`                                     |
+| `-like`        | Patrón (wildcard)| Compara con comodines `*` y `?` (no es regex).                                                   | `"server01" -like "server*"`                   |
+| `-notlike`     | Patrón (wildcard)| Negación de `-like`.                                                                             | `"server01" -notlike "db*"`                    |
+| `-match`       | Expresión regular| Evalúa si el valor coincide con una expresión regular.                                           | `"abc123" -match "\d{3}"`                      |
+| `-notmatch`    | Expresión regular| Negación de `-match`.                                                                            | `"abc" -notmatch "\d"`                         |
+| `-contains`    | Contenedor       | Comprueba si una colección contiene un valor específico (lado izquierdo **colección**).         | `@(1,2,3) -contains 2`                         |
+| `-notcontains` | Contenedor       | Negación de `-contains`.                                                                         | `@(1,2,3) -notcontains 5`                      |
+| `-in`          | Contenedor       | Comprueba si un valor está dentro de una colección (lado izquierdo **valor**).                   | `2 -in @(1,2,3)`                               |
+| `-notin`       | Contenedor       | Negación de `-in`.                                                                               | `5 -notin @(1,2,3)`                            |
+| `-is`          | Tipo de datos    | Comprueba si un objeto es de un tipo especificado.                                               | `"text" -is [string]`                          |
+| `-isnot`       | Tipo de datos    | Negación de `-is`.                                                                               | `"text" -isnot [int]` 
+
 ## **Some Querys:**
 
 ***- Get all properties and methods from the selected cmdlet (Get-Service):***<br>
@@ -68,14 +93,19 @@ Get-Service | Get-Member -MemberType Method
 Get-Service Wsearch | Get-Member
 ```
 
-***- Show all metadatos from the selected cmdlet:***<br>
+***- Show all metadatos from the selected cmdlet:***
 ```powershell
 Get-Command Get-Process | Format-List *
 ```
 
-***- Groups all services with status 'Running':***<br>
+***- Groups all services with status 'Running':***
 ```powershell
 Get-Service | Where-Object {$_.Status -eq "Running"} | Group-Object Status
+```
+
+***- More than one filter apply in the same 'pipe':***
+```powershell
+Get-Service | Where-Object {$_.Status -eq "Running"} | Where-Object {$_.DisplayName -like "*Active*"}
 ```
 
 
